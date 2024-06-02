@@ -4,10 +4,6 @@ setup_apt() {
   # setup apt repositories
   echo "Setting up apt repositories..."
 
-  # Disable CD-ROM
-  sudo sed -i 's/deb\ cdrom/#deb\ cdrom/g' /etc/apt/sources.list
-  sudo sed -i 's/deb-src\ cdrom/#deb\ cdrom/g' /etc/apt/sources.list
-
   # Steam
   sudo dpkg --add-architecture i386
   sudo add-apt-repository -ys multiverse
@@ -19,9 +15,9 @@ setup_apt() {
   sudo apt-add-repository -ys ppa:system76-dev/stable
 
   # Add cloudflare gpg key
-  curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+  #curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
   # Add cloudflare repo to apt repositories
-  echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ jammy main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+  echo "deb [arch=amd64 trusted=yes] https://pkg.cloudflareclient.com/ jammy main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
 
   # update
   sudo apt update
@@ -81,6 +77,10 @@ setup_debs() {
   sudo dpkg -i /tmp/discord.deb
 }
 
+setup_nvm() {
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+}
+
 setup_ui() {
   echo "Setting up UI..."
   lookandfeeltool -a org.kde.breezedark.desktop
@@ -90,6 +90,7 @@ do_setup() {
   setup_apt
   setup_snaps
   setup_cloudflare_warp
+  setup_nvm
   setup_debs
   setup_ui
 }
