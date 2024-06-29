@@ -15,9 +15,9 @@ setup_apt() {
   sudo apt-add-repository -ys ppa:system76-dev/stable
 
   # Add cloudflare gpg key
-  #curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+  curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare.gpg
   # Add cloudflare repo to apt repositories
-  echo "deb [arch=amd64 trusted=yes] https://pkg.cloudflareclient.com/ jammy main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare.gpg] https://pkg.cloudflareclient.com/ jammy main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
 
   # update
   sudo apt update
@@ -72,7 +72,6 @@ setup_debs() {
   echo "Installing debs..."
 
   # discord
-  #https://discord.com/api/download?platform=linux&format=deb
   curl -sL "https://discord.com/api/download?platform=linux&format=deb" -o /tmp/discord.deb
   sudo dpkg -i /tmp/discord.deb
 }
