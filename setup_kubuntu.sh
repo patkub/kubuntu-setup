@@ -17,7 +17,7 @@ setup_apt() {
   # Add cloudflare gpg key
   curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare.gpg
   # Add cloudflare repo to apt repositories
-  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare.gpg] https://pkg.cloudflareclient.com/ jammy main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare.gpg] https://pkg.cloudflareclient.com/ noble main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
 
   # update
   sudo apt update
