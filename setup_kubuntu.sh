@@ -47,16 +47,16 @@ setup_snaps() {
   sudo snap install --classic ruby
 
   # JetBrains
-  sudo snap install --classic clion --channel=2024.1/stable
-  sudo snap install --classic datagrip --channel=2024.1/stable
-  sudo snap install --classic dataspell --channel=2024.1/stable
-  sudo snap install --classic goland --channel=2024.1/stable
-  sudo snap install --classic intellij-idea-ultimate --channel=2024.1/stable
-  sudo snap install --classic phpstorm --channel=2024.1/stable
-  sudo snap install --classic pycharm-professional --channel=2024.1/stable
-  sudo snap install --classic rider --channel=2024.1/stable
-  sudo snap install --classic rubymine --channel=2024.1/stable
-  sudo snap install --classic webstorm --channel=2024.1/stable
+  sudo snap install --classic clion --channel=2024.3/stable
+  sudo snap install --classic datagrip --channel=2024.3/stable
+  sudo snap install --classic dataspell --channel=2024.3/stable
+  sudo snap install --classic goland --channel=2024.3/stable
+  sudo snap install --classic intellij-idea-ultimate --channel=2024.3/stable
+  sudo snap install --classic phpstorm --channel=2024.3/stable
+  sudo snap install --classic pycharm-professional --channel=2024.3/stable
+  sudo snap install --classic rider --channel=2024.3/stable
+  sudo snap install --classic rubymine --channel=2024.3/stable
+  sudo snap install --classic webstorm --channel=2024.3/stable
 }
 
 setup_cloudflare_warp () {
